@@ -8,7 +8,7 @@
  * @sec - the second integer
  */
 
-void swapp_integer(int* first, int* sec)
+void swapp_integer(int *first, int *sec)
 {
 	int temp = *first;
 	*first = *sec;
@@ -26,6 +26,7 @@ void bubble_sort(int *array, size_t size)
 {
 	bool swapp;
 	size_t a, b;
+
 	for (a = 0; a < size - 1; a++)
 	{
 		swapp = false;
