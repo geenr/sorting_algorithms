@@ -10,7 +10,9 @@
 
 void swapp_integer(int *first, int *sec)
 {
-	int temp = *first;
+	int temp;
+	
+	temp = *first;
 	*first = *sec;
 	*sec = temp;
 }

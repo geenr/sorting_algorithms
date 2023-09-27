@@ -25,5 +25,7 @@ void quick_sort(int *array, size_t size);
 
 void swapp_integer(int *first, int *sec);
 void node_swapp(listint_t **hd, listint_t **nodeA, listint_t *nodeB);
+void recursive_quicksort(int *array, size_t size, int p_left, int p_right);
+int lomuto_partition_scheme(int *array, size_t size, int p_left, int p_right);
 
 #endif
