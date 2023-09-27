@@ -49,10 +49,9 @@ void recursive_quicksort(int *array, size_t size, int p_left, int p_right)
 {
 	int p;
 
-	if (p_left < p_right)
+	if (p_right - p_left > 0)
 	{
 		p = lomuto_partition_scheme(array, size, p_left, p_right);
-		print_array(array, size);
 		recursive_quicksort(array, size, p_left, p - 1);
 		recursive_quicksort(array, size, p + 1, p_right);
 	}
@@ -66,29 +65,32 @@ void recursive_quicksort(int *array, size_t size, int p_left, int p_right)
  * @p_left - start of array patrtioned
  * @p-right - end of array partitioned
  *
- * Description: divides array into subarrays
+ * Returns: final partition index
  */
 
 int lomuto_partition_scheme(int *array, size_t size, int p_left, int p_right)
 {
-	int a, b, pv;
+	int a, b, *pv;
 
-	a = p_left - 1;
-	pv = array[p_right];;
-	for (b = p_left; b < p_right; b++)
+	pv = array + p_right;
+	for (a = b = p_left; b < p_right; b++)
 	{
-		if (array[b] < pv)
+		if (array[b] < *pv)
 		{
-			a++;
-			swapp_integer(&array[a], &array[b]);
-			if (a != b)
+			if (a < b)
+			{
+				swapp_integer(array + b, array + a);
 				print_array(array, size);
+			}
+			a++;
 		}
 	}
 
-	swapp_integer(&array[a + 1], &array[p_right]);
-	if (a + 1 != p_right)
+	if (array[a] > *pv)
+	{
+		swapp_integer(array + a, pv);
 		print_array(array, size);
+	}
 
-	return (a + 1);
+	return (a);
 }
